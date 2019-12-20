@@ -48,4 +48,10 @@ Click File->Load file->Parse C header file... or press Ctrl+F9, load headerfile.
 pull jsonfile from jsonoutpath, put it at same path with libil2cpp.so,rename it to `output.json`;  
 run `scripts/load_symbols.py`, it may take a long time.  
 
+as ida's function and strings search may be very slow after loaded lot's of symbols,  
+you can copy `scripts/symbols_search.py` to same path with `output.json`, open python shell there,  
+run `from symbols_search import *`, then  
+use `sf("kword1 kword2 ...")` to search function or class's name,  
+use `ss("kword1 kword2 ...")` to search in strings.  
+
 then enjoy your reversing with full structs and symbols info.  
