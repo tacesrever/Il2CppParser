@@ -8,6 +8,8 @@ libil2cpp symbol parser for ida.
 ### find libil2cpp  
 firstly you should find target's internal libil2cpp headerfile version,  
 by analsys libil2cpp.so or try every finded version by github or etc.  
+you can run `scripts/find_il2cpp_addrs.py` without libil2cpp to determine internal structs and it's size,  
+which will be helpful for find right libil2cpp version.  
 once you find it, replace libil2cpp.  
 
 ### fix libil2cpp for ida  
