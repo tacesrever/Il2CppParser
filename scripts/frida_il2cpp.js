@@ -42,7 +42,7 @@ function dlopen(dlname) {
     if(!_dlopen) return null;
     var ret = _dlopen(dlname, RTLD_NOW);
     if(ret.isNull()) console.log(dlerror());
-    else log("[+] loaded:", dlname);
+    else console.log("[+] loaded:", dlname);
     return ret;
 }
 
