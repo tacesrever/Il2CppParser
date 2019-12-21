@@ -1,7 +1,10 @@
 # Il2CppParser  
-libil2cpp symbol parser for ida.  
+libil2cpp runtime symbol parser for ida,  
+do not need global-metadata.dat.  
   
 ![example](./example.png)  
+
+
 
 # Useage  
 
