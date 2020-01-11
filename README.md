@@ -47,9 +47,9 @@ push `il2cpp_addrs.json` on your device;
   
 open app, let it load libparser.so, and run these after unity has started:  
 
-    libparser.parser_init(il2cpp_addrs.json);  
+    libparser.init(il2cpp_addrs.json);  
     libparser.dumpAll(jsonoutpath, headeroutpath);  
-for frida, you can `use scripts/frida_il2cpp.js` at this step.  
+for frida, you can use `scripts/frida_il2cpp.js` at this step.  
 if app crashed at this step, the libil2cpp's version may be wrong, try another.  
 
 pull headerfile from headeroutpath, put it in libil2cpp for ida,  
