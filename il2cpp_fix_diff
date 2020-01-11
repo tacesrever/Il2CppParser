@@ -1,0 +1,320 @@
+diff -r ./libil2cpp\il2cpp-api-types.h ./libil2cpp_ida\il2cpp-api-types.h
+3,4c3,4
+< #include <stdint.h>
+< #include <stddef.h>
+---
+> // #include <stdint.h>
+> // #include <stddef.h>
+diff -r ./libil2cpp\il2cpp-api.h ./libil2cpp_ida\il2cpp-api.h
+3c3
+< #include <stdint.h>
+---
+> // #include <stdint.h>
+diff -r ./libil2cpp\il2cpp-class-internals.h ./libil2cpp_ida\il2cpp-class-internals.h
+4c4
+< #include <stdint.h>
+---
+> // #include <stdint.h>
+454c454
+<     mutable Il2CppNameToTypeDefinitionIndexHashTable* nameToClassHashTable;
+---
+>     Il2CppNameToTypeDefinitionIndexHashTable* nameToClassHashTable;
+diff -r ./libil2cpp\il2cpp-config.h ./libil2cpp_ida\il2cpp-config.h
+3,8c3,8
+< #include <assert.h>
+< #include <stddef.h>
+< #include <stdlib.h>
+< #include <stdio.h>
+< #include <string.h>
+< #include <stdint.h>
+---
+> // #include <assert.h>
+> // #include <stddef.h>
+> // #include <stdlib.h>
+> // #include <stdio.h>
+> // #include <string.h>
+> // #include <stdint.h>
+335c335
+< template<bool value>
+---
+> // template<bool value>
+338,339c338,339
+< template<>
+< struct Il2CppStaticAssertHelper<true>
+---
+> // template<>
+> struct Il2CppStaticAssertHelper
+358,360c358,360
+< const intptr_t kIl2CppIntPtrMin = kIl2CppInt32Min;
+< const intptr_t kIl2CppIntPtrMax = kIl2CppInt32Max;
+< const uintptr_t kIl2CppUIntPtrMax = kIl2CppUInt32Max;
+---
+> const intptr_t kIl2CppIntPtrMin = 0x80000000;
+> const intptr_t kIl2CppIntPtrMax = 0x7fffffff;
+> const uintptr_t kIl2CppUIntPtrMax = 0xffffffff;
+diff -r ./libil2cpp\il2cpp-metadata.h ./libil2cpp_ida\il2cpp-metadata.h
+4c4
+< #include <stdint.h>
+---
+> // #include <stdint.h>
+279c279
+< const int kPublicKeyByteLength = 8;
+---
+> #define kPublicKeyByteLength 8
+diff -r ./libil2cpp\il2cpp-object-internals.h ./libil2cpp_ida\il2cpp-object-internals.h
+4,5c4,5
+< #include <stdint.h>
+< #include <stddef.h>
+---
+> // #include <stdint.h>
+> // #include <stddef.h>
+25,32c25,32
+< namespace il2cpp
+< {
+< namespace os
+< {
+<     class FastMutex;
+<     class Thread;
+< }
+< }
+---
+> // namespace il2cpp
+> // {
+> // namespace os
+> // {
+>     // class FastMutex;
+>     // class Thread;
+> // }
+> // }
+73,75c73,75
+< const size_t kIl2CppSizeOfArray = (offsetof(Il2CppArraySize, vector));
+< const size_t kIl2CppOffsetOfArrayBounds = (offsetof(Il2CppArray, bounds));
+< const size_t kIl2CppOffsetOfArrayLength = (offsetof(Il2CppArray, max_length));
+---
+> // const size_t kIl2CppSizeOfArray = (offsetof(Il2CppArraySize, vector));
+> // const size_t kIl2CppOffsetOfArrayBounds = (offsetof(Il2CppArray, bounds));
+> // const size_t kIl2CppOffsetOfArrayLength = (offsetof(Il2CppArray, max_length));
+132,139c132,138
+<     const Il2CppType* GetIl2CppType() const
+<     {
+< #if !NET_4_0
+<         return type.type;
+< #else
+<         return type.type.type;
+< #endif
+<     }
+---
+>      // Il2CppType* GetIl2CppType;// {
+> // #if !NET_4_0
+>         // return type.type;
+> // #else
+>         // return type.type.type;
+> // #endif
+>     // }
+332c331
+<     il2cpp::os::Thread* handle;
+---
+>     void* handle;
+350c349
+<     il2cpp::os::FastMutex* synch_cs;
+---
+>     FastMutex* synch_cs;
+443c442
+<     il2cpp::os::Thread* handle;
+---
+>     void* handle;
+467c466,467
+<     il2cpp::os::FastMutex* synch_cs;
+---
+>     // FastMutex* synch_cs;
+>     void* FastMutex_synch_cs;
+506,509c506,509
+<     Il2CppThread* GetInternalThread()
+<     {
+<         return this;
+<     }
+---
+>     // Il2CppThread* GetInternalThread()
+>     // {
+>         // return this;
+>     // }
+512,515c512,515
+<     Il2CppInternalThread* GetInternalThread() const
+<     {
+<         return internal_thread;
+<     }
+---
+>     // Il2CppInternalThread* GetInternalThread() const
+>     // {
+>         // return internal_thread;
+>     // }
+1062c1062
+<     Il2CppExceptionWrapper(MonoException* ex) : ex(ex) {}
+---
+>     // Il2CppExceptionWrapper(MonoException* ex) : ex(ex) {}
+1065c1065
+<     Il2CppExceptionWrapper(Il2CppException* ex) : ex(ex) {}
+---
+>     // Il2CppExceptionWrapper(Il2CppException* ex) : ex(ex) {}
+1496c1496
+< struct LIBIL2CPP_CODEGEN_API NOVTABLE Il2CppIUnknown
+---
+> struct Il2CppIUnknown
+1498,1501c1498,1501
+<     static const Il2CppGuid IID;
+<     virtual il2cpp_hresult_t STDCALL QueryInterface(const Il2CppGuid& iid, void** object) = 0;
+<     virtual uint32_t STDCALL AddRef() = 0;
+<     virtual uint32_t STDCALL Release() = 0;
+---
+>     Il2CppGuid IID;
+>     // virtual il2cpp_hresult_t STDCALL QueryInterface(const Il2CppGuid& iid, void** object) = 0;
+>     // virtual uint32_t STDCALL AddRef() = 0;
+>     // virtual uint32_t STDCALL Release() = 0;
+1504c1504
+< struct NOVTABLE Il2CppISequentialStream : Il2CppIUnknown
+---
+> struct Il2CppISequentialStream
+1506,1508c1506,1508
+<     static const LIBIL2CPP_CODEGEN_API Il2CppGuid IID;
+<     virtual il2cpp_hresult_t STDCALL Read(void* buffer, uint32_t size, uint32_t* read) = 0;
+<     virtual il2cpp_hresult_t STDCALL Write(const void* buffer, uint32_t size, uint32_t* written) = 0;
+---
+>     Il2CppGuid IID;
+>     // virtual il2cpp_hresult_t STDCALL Read(void* buffer, uint32_t size, uint32_t* read) = 0;
+>     // virtual il2cpp_hresult_t STDCALL Write(const void* buffer, uint32_t size, uint32_t* written) = 0;
+1511c1511
+< struct NOVTABLE Il2CppIStream : Il2CppISequentialStream
+---
+> struct Il2CppIStream
+1513,1522c1513,1522
+<     static const LIBIL2CPP_CODEGEN_API Il2CppGuid IID;
+<     virtual il2cpp_hresult_t STDCALL Seek(int64_t move, uint32_t origin, uint64_t* position) = 0;
+<     virtual il2cpp_hresult_t STDCALL SetSize(uint64_t size) = 0;
+<     virtual il2cpp_hresult_t STDCALL CopyTo(Il2CppIStream* stream, uint64_t size, uint64_t* read, uint64_t* written) = 0;
+<     virtual il2cpp_hresult_t STDCALL Commit(uint32_t flags) = 0;
+<     virtual il2cpp_hresult_t STDCALL Revert() = 0;
+<     virtual il2cpp_hresult_t STDCALL LockRegion(uint64_t offset, uint64_t size, uint32_t type) = 0;
+<     virtual il2cpp_hresult_t STDCALL UnlockRegion(uint64_t offset, uint64_t size, uint32_t type) = 0;
+<     virtual il2cpp_hresult_t STDCALL Stat(Il2CppStatStg* data, uint32_t flags) = 0;
+<     virtual il2cpp_hresult_t STDCALL Clone(Il2CppIStream** stream) = 0;
+---
+>     Il2CppGuid IID;
+>     // virtual il2cpp_hresult_t STDCALL Seek(int64_t move, uint32_t origin, uint64_t* position) = 0;
+>     // virtual il2cpp_hresult_t STDCALL SetSize(uint64_t size) = 0;
+>     // virtual il2cpp_hresult_t STDCALL CopyTo(Il2CppIStream* stream, uint64_t size, uint64_t* read, uint64_t* written) = 0;
+>     // virtual il2cpp_hresult_t STDCALL Commit(uint32_t flags) = 0;
+>     // virtual il2cpp_hresult_t STDCALL Revert() = 0;
+>     // virtual il2cpp_hresult_t STDCALL LockRegion(uint64_t offset, uint64_t size, uint32_t type) = 0;
+>     // virtual il2cpp_hresult_t STDCALL UnlockRegion(uint64_t offset, uint64_t size, uint32_t type) = 0;
+>     // virtual il2cpp_hresult_t STDCALL Stat(Il2CppStatStg* data, uint32_t flags) = 0;
+>     // virtual il2cpp_hresult_t STDCALL Clone(Il2CppIStream** stream) = 0;
+1525c1525
+< struct LIBIL2CPP_CODEGEN_API NOVTABLE Il2CppIMarshal : Il2CppIUnknown
+---
+> struct Il2CppIMarshal
+1527,1533c1527,1533
+<     static const Il2CppGuid IID;
+<     virtual il2cpp_hresult_t STDCALL GetUnmarshalClass(const Il2CppGuid& iid, void* object, uint32_t context, void* reserved, uint32_t flags, Il2CppGuid* clsid) = 0;
+<     virtual il2cpp_hresult_t STDCALL GetMarshalSizeMax(const Il2CppGuid& iid, void* object, uint32_t context, void* reserved, uint32_t flags, uint32_t* size) = 0;
+<     virtual il2cpp_hresult_t STDCALL MarshalInterface(Il2CppIStream* stream, const Il2CppGuid& iid, void* object, uint32_t context, void* reserved, uint32_t flags) = 0;
+<     virtual il2cpp_hresult_t STDCALL UnmarshalInterface(Il2CppIStream* stream, const Il2CppGuid& iid, void** object) = 0;
+<     virtual il2cpp_hresult_t STDCALL ReleaseMarshalData(Il2CppIStream* stream) = 0;
+<     virtual il2cpp_hresult_t STDCALL DisconnectObject(uint32_t reserved) = 0;
+---
+>     Il2CppGuid IID;
+>     // virtual il2cpp_hresult_t STDCALL GetUnmarshalClass(const Il2CppGuid& iid, void* object, uint32_t context, void* reserved, uint32_t flags, Il2CppGuid* clsid) = 0;
+>     // virtual il2cpp_hresult_t STDCALL GetMarshalSizeMax(const Il2CppGuid& iid, void* object, uint32_t context, void* reserved, uint32_t flags, uint32_t* size) = 0;
+>     // virtual il2cpp_hresult_t STDCALL MarshalInterface(Il2CppIStream* stream, const Il2CppGuid& iid, void* object, uint32_t context, void* reserved, uint32_t flags) = 0;
+>     // virtual il2cpp_hresult_t STDCALL UnmarshalInterface(Il2CppIStream* stream, const Il2CppGuid& iid, void** object) = 0;
+>     // virtual il2cpp_hresult_t STDCALL ReleaseMarshalData(Il2CppIStream* stream) = 0;
+>     // virtual il2cpp_hresult_t STDCALL DisconnectObject(uint32_t reserved) = 0;
+1536c1536
+< struct NOVTABLE Il2CppIManagedObject : Il2CppIUnknown
+---
+> struct Il2CppIManagedObject
+1538,1540c1538,1540
+<     static const LIBIL2CPP_CODEGEN_API Il2CppGuid IID;
+<     virtual il2cpp_hresult_t STDCALL GetSerializedBuffer(Il2CppChar** bstr) = 0;
+<     virtual il2cpp_hresult_t STDCALL GetObjectIdentity(Il2CppChar** bstr_guid, int32_t* app_domain_id, intptr_t* ccw) = 0;
+---
+>     Il2CppGuid IID;
+>     // virtual il2cpp_hresult_t STDCALL GetSerializedBuffer(Il2CppChar** bstr) = 0;
+>     // virtual il2cpp_hresult_t STDCALL GetObjectIdentity(Il2CppChar** bstr_guid, int32_t* app_domain_id, intptr_t* ccw) = 0;
+1543c1543
+< struct LIBIL2CPP_CODEGEN_API NOVTABLE Il2CppIManagedObjectHolder : Il2CppIUnknown
+---
+> struct Il2CppIManagedObjectHolder
+1545,1547c1545,1547
+<     static const Il2CppGuid IID;
+<     virtual Il2CppObject* STDCALL GetManagedObject() = 0;
+<     virtual void STDCALL Destroy() = 0;
+---
+>     Il2CppGuid IID;
+>     // virtual Il2CppObject* STDCALL GetManagedObject() = 0;
+>     // virtual void STDCALL Destroy() = 0;
+1550c1550
+< struct LIBIL2CPP_CODEGEN_API NOVTABLE Il2CppIInspectable : Il2CppIUnknown
+---
+> struct Il2CppIInspectable
+1552,1555c1552,1555
+<     static const Il2CppGuid IID;
+<     virtual il2cpp_hresult_t STDCALL GetIids(uint32_t* iidCount, Il2CppGuid** iids) = 0;
+<     virtual il2cpp_hresult_t STDCALL GetRuntimeClassName(Il2CppHString* className) = 0;
+<     virtual il2cpp_hresult_t STDCALL GetTrustLevel(int32_t* trustLevel) = 0;
+---
+>     Il2CppGuid IID;
+>     // virtual il2cpp_hresult_t STDCALL GetIids(uint32_t* iidCount, Il2CppGuid** iids) = 0;
+>     // virtual il2cpp_hresult_t STDCALL GetRuntimeClassName(Il2CppHString* className) = 0;
+>     // virtual il2cpp_hresult_t STDCALL GetTrustLevel(int32_t* trustLevel) = 0;
+1558c1558
+< struct NOVTABLE Il2CppIActivationFactory : Il2CppIInspectable
+---
+> struct Il2CppIActivationFactory
+1560,1561c1560,1561
+<     static const LIBIL2CPP_CODEGEN_API Il2CppGuid IID;
+<     virtual il2cpp_hresult_t STDCALL ActivateInstance(Il2CppIInspectable** instance) = 0;
+---
+>     Il2CppGuid IID;
+>     // virtual il2cpp_hresult_t STDCALL ActivateInstance(Il2CppIInspectable** instance) = 0;
+1564c1564
+< struct NOVTABLE Il2CppIRestrictedErrorInfo : Il2CppIUnknown
+---
+> struct Il2CppIRestrictedErrorInfo
+1566,1568c1566,1568
+<     static const LIBIL2CPP_CODEGEN_API Il2CppGuid IID;
+<     virtual il2cpp_hresult_t STDCALL GetErrorDetails(Il2CppChar** bstrDescription, il2cpp_hresult_t* error, Il2CppChar** bstrRestrictedDescription, Il2CppChar** bstrCapabilitySid) = 0;
+<     virtual il2cpp_hresult_t STDCALL GetReference(Il2CppChar** bstrReference) = 0;
+---
+>     Il2CppGuid IID;
+>     // virtual il2cpp_hresult_t STDCALL GetErrorDetails(Il2CppChar** bstrDescription, il2cpp_hresult_t* error, Il2CppChar** bstrRestrictedDescription, Il2CppChar** bstrCapabilitySid) = 0;
+>     // virtual il2cpp_hresult_t STDCALL GetReference(Il2CppChar** bstrReference) = 0;
+1571c1571
+< struct NOVTABLE Il2CppILanguageExceptionErrorInfo : Il2CppIUnknown
+---
+> struct Il2CppILanguageExceptionErrorInfo
+1573,1574c1573,1574
+<     static const LIBIL2CPP_CODEGEN_API Il2CppGuid IID;
+<     virtual il2cpp_hresult_t STDCALL GetLanguageException(Il2CppIUnknown** languageException) = 0;
+---
+>     Il2CppGuid IID;
+>     // virtual il2cpp_hresult_t STDCALL GetLanguageException(Il2CppIUnknown** languageException) = 0;
+1577c1577
+< struct NOVTABLE Il2CppIAgileObject : Il2CppIUnknown
+---
+> struct Il2CppIAgileObject
+1579,1580c1579,1580
+<     static const LIBIL2CPP_CODEGEN_API Il2CppGuid IID;
+<     virtual il2cpp_hresult_t STDCALL GetLanguageException(Il2CppIUnknown** languageException) = 0;
+---
+>     Il2CppGuid IID;
+>     // virtual il2cpp_hresult_t STDCALL GetLanguageException(Il2CppIUnknown** languageException) = 0;
+diff -r ./libil2cpp\il2cpp-runtime-metadata.h ./libil2cpp_ida\il2cpp-runtime-metadata.h
+3c3
+< #include <stdint.h>
+---
+> // #include <stdint.h>
+diff -r ./libil2cpp\il2cpp-string-types.h ./libil2cpp_ida\il2cpp-string-types.h
+3c3
+< #include <string>
+---
+> // #include <string>

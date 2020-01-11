@@ -444,6 +444,7 @@ void dumpAll(const char* filename, const char* headername) {
 
 	_parser_log("[+] dumping classes...");
 	for (size_t imageidx = 0; imageidx < s_ImagesCount; ++imageidx, ++image) {
+        _parser_log("[+] dumping classes for image %s (%d:%d)...", image->name, image->typeStart, image->typeCount);
 		json classes;
 		for (size_t typeidx = image->typeStart; typeidx < image->typeStart + image->typeCount; ++typeidx) {
 			Il2CppClass* il2cppclass = GetTypeInfoFromTypeDefinitionIndex(typeidx);

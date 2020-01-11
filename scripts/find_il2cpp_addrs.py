@@ -266,9 +266,9 @@ def findAll():
     findGetTypeInfoFromTypeDefinitionIndex()
     findGetTypeInfoFromTypeIndex()
     findMetadataRegistration()
+    findClass_InitFromCodegen()
     findInitializeMethodMetadata()
     findMetadataUsagePairs()
-    findClass_InitFromCodegen()
     findFuncsByInitializeMethodMetadata()
 
 findAll()
